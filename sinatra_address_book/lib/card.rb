@@ -1,4 +1,5 @@
 class Card
+  attr_accessor :id
   attr_accessor :first_name
   attr_accessor :last_name
 
@@ -14,6 +15,10 @@ class Card
     cards
   end
 
+  def self.find(id)
+    cards.find { |card| card.id.to_s == id.to_s }
+  end
+
   def self.clear
     @cards = []
   end
@@ -23,6 +28,7 @@ class Card
     attributes.each do |k, v|
       card.send("#{k}=", v)
     end
+    card.id = cards.length + 1
     cards << card
     card
   end
@@ -33,6 +39,7 @@ class Card
 
   def serialized_hash
     {
+      'id' => id,
       'first_name' => first_name,
       'last_name' => last_name
     }
