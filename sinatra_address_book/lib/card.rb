@@ -2,6 +2,8 @@ class Card
   attr_accessor :id
   attr_accessor :first_name
   attr_accessor :last_name
+  attr_accessor :display_name
+  attr_accessor :emails
 
   def self.last
     cards.last 
@@ -31,6 +33,12 @@ class Card
     card.id = cards.length + 1
     cards << card
     card
+  end
+
+  def update_attributes(attributes = {})
+    attributes.each do |k, v|
+      send("#{k}=", v)
+    end
   end
 
   def to_json(*a)
