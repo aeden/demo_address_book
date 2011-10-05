@@ -25,5 +25,3 @@ Feature: create a card
     """
     Then the response status should be "201"
     And the response body should be a JSON representation of the Card
-
-

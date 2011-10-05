@@ -22,3 +22,11 @@ end
 Then /^the response body should be a JSON representation of the (\w+) list$/ do |model|
   last_response.body.should eq(model.constantize.all.to_json)
 end
+
+Then /^the response body should have (\d+) cards$/ do |count|
+  JSON.parse(last_response.body).length.should eq(count.to_i)
+end
+
+Then /^show me the response body$/ do
+  puts last_response.body
+end
