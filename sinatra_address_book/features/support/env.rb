@@ -6,8 +6,7 @@ require File.join(File.dirname(__FILE__), '..', '..', 'address_book.rb')
 
 require 'rspec'
 require 'rack/test'
-
-#Capybara.app = AddressBook
+require 'mustache'
 
 class AddressBookWorld
   include RSpec::Expectations
@@ -23,8 +22,12 @@ World do
   AddressBookWorld.new
 end
 
+Before do
+  Card.clear
+end
+
 class String
   def constantize
-    split('::').inject(Object) {|memo,name| memo =  memo.const_get(name); memo}
+    split('::').inject(Object) {|memo,name| memo = memo.const_get(name); memo}
   end
 end

@@ -3,14 +3,35 @@ class Card
   attr_accessor :last_name
 
   def self.last
-    Card.new
+    cards.last 
   end
 
-  def to_json
-    JSON.generate(attributes)
+  def self.cards
+    @cards ||= []
   end
 
-  def attributes
+  def self.all
+    cards
+  end
+
+  def self.clear
+    @cards = []
+  end
+
+  def self.create!(attributes = {})
+    card = Card.new
+    attributes.each do |k, v|
+      card.send("#{k}=", v)
+    end
+    cards << card
+    card
+  end
+
+  def to_json(*a)
+    serialized_hash.to_json(*a)
+  end
+
+  def serialized_hash
     {
       'first_name' => first_name,
       'last_name' => last_name
