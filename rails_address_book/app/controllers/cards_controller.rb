@@ -5,6 +5,10 @@ class CardsController < ApplicationController
     respond_with(Card.all)
   end
 
+  def show
+    respond_with(Card.find(params[:id]))
+  end
+
   def create
     emails_attributes = params.delete(:emails)
     params[:card].merge!(:emails => emails_attributes.map{ |email_attributes| Email.new(email_attributes) }) if emails_attributes

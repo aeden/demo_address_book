@@ -3,7 +3,8 @@ Given /^I send and accept JSON$/ do
   header 'Content-Type', 'application/json'
 end
 
-When /^I send a GET require to "([^"]*)"$/ do |path|
+When /^I send a GET request to "([^"]*)"$/ do |path|
+  path = Mustache.render(path, {:id => @id})
   get path 
 end
 
