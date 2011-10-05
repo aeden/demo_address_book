@@ -24,4 +24,10 @@ class CardsController < ApplicationController
       format.json { render :json => card }
     end
   end
+
+  def destroy
+    card = Card.find(params[:id])
+    card.destroy
+    respond_with(card)
+  end
 end
