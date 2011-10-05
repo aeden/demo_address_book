@@ -26,3 +26,8 @@ put '/cards/:id' do |id|
   card.update_attributes(params)
   [200, {}, card.to_json]
 end
+
+delete '/cards/:id' do |id|
+  Card.destroy(id)
+  [200, {}, nil]
+end

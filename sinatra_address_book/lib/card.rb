@@ -21,6 +21,10 @@ class Card
     cards.find { |card| card.id.to_s == id.to_s }
   end
 
+  def self.destroy(id)
+    cards.delete_if { |card| card.id.to_s == id.to_s }
+  end
+
   def self.clear
     @cards = []
   end
