@@ -1,0 +1,9 @@
+source :rubygems
+
+gem 'sinatra'
+
+gem 'rack-test'
+gem 'mustache'
+gem 'rspec'
+gem 'cucumber'
+gem 'cucumber-sinatra'
