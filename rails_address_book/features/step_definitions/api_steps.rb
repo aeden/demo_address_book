@@ -11,6 +11,11 @@ When /^I send a POST request to "([^\"]*)" with the following:$/ do |path, body|
   post path, body
 end
 
+When /^I send a PUT request to "([^"]*)" with the following:$/ do |path, body|
+  path = Mustache.render(path, {:id => @id}) 
+  put path, body
+end
+
 Then /^the response status should be "([^"]*)"$/ do |status|
   last_response.status.should eq(status.to_i), "response status code did not match: expected #{status} was #{last_response.status}\n#{last_response.body}"
 end

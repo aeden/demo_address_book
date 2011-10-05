@@ -34,4 +34,5 @@ group :test do
   gem 'cucumber-rails'
   gem 'database_cleaner'
   gem 'mustache'
+  gem 'ruby-debug19'
 end
