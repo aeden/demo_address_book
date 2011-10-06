@@ -3,6 +3,16 @@ Given /^I send and accept JSON$/ do
   header 'Content-Type', 'application/json'
 end
 
+Given /^I send and accept JSON using version (\d+) of the (\w+) API$/ do |version, model|
+  header 'Accept', "application/json;"
+  header 'Content-Type', "application/json;"
+end
+
+Given /^I send and accept XML$/ do
+  header 'Accept', 'text/xml'
+  header 'Content-Type', 'text/xml'
+end
+
 When /^I send a GET request to "([^"]*)"$/ do |path|
   path = Mustache.render(path, {:id => @id})
   get path 
@@ -44,6 +54,10 @@ end
 
 Then /^the response body should be a JSON representation of the (\w+) list$/ do |model|
   last_response.body.should eq(model.constantize.all.to_json)
+end
+
+Then /^the response body should be an XML representation of the (\w+)$/ do |model|
+  last_response.body.should eq(model.constantize.last.to_xml)
 end
 
 Then /^the response body should have (\d+) cards$/ do |count|

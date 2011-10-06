@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  respond_to :json
+  respond_to :json, :xml
 
   def index
     respond_with(Card.all)

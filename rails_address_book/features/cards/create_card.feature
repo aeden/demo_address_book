@@ -3,7 +3,7 @@ Feature: create a card
   In order to add a person or business to the address book
   I can create a card
 
-  Scenario:
+  Scenario: create a card with JSON
     Given I send and accept JSON
     When I send a POST request to "/cards" with the following:
     """
@@ -25,3 +25,17 @@ Feature: create a card
     """
     Then the response status should be "201"
     And the response body should be a JSON representation of the Card
+
+  Scenario: create a card with XML
+    Given I send and accept XML
+    When I send a POST request to "/cards" with the following:
+    """
+    <?xml version="1.0"?>
+    <card>
+      <first_name>Anthony</first_name>
+      <last_name>Eden</last_name>
+      <display_name>Anthony Eden</display_name>
+    </card>
+    """
+    Then the response status should be "201"
+    And the response body should be an XML representation of the Card
