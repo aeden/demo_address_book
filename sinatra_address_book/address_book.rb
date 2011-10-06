@@ -3,7 +3,6 @@ require 'sinatra'
 $:.unshift('./lib').unshift('.')
 
 require 'middleware/json_body'
-
 use JsonBody
 
 require 'card'
