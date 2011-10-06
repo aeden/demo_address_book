@@ -10,8 +10,6 @@ class CardsController < ApplicationController
   end
 
   def create
-    debugger
-
     if request.format.symbol == :json_v2
       name = params[:name]
       params[:card].merge!(:first_name => name[:first], :last_name => name[:last], :display_name => name[:display]) if name
