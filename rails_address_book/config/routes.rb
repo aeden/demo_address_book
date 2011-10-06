@@ -14,31 +14,13 @@ RailsAddressBook::Application.routes.draw do
   #   resources :products
 
   resources :cards
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
 
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', :on => :collection
-  #     end
-  #   end
+  namespace :v1 do
+    resources :cards
+  end
+  namespace :v2 do
+    resources :cards
+  end
 
   # Sample resource route within a namespace:
   #   namespace :admin do
