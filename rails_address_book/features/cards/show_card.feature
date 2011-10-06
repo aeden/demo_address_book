@@ -10,3 +10,10 @@ Feature: show a card
     When I send a GET request to "/cards/{{id}}"
     Then the response status should be "200"
     And the response body should be a JSON representation of the Card
+
+  Scenario:
+    Given I send and accept JSON
+    And I have created a card
+    When I send a GET request to "/cards/{{id}}" with the last Card id
+    Then the response status should be "200"
+    And the response body should be a JSON representation of the Card

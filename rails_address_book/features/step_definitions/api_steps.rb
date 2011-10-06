@@ -8,6 +8,12 @@ When /^I send a GET request to "([^"]*)"$/ do |path|
   get path 
 end
 
+When /^I send a GET request to "([^"]*)" with the last (\w+) id$/ do |path, model|
+  id = model.constantize.last.id
+  path = Mustache.render(path, {:id => id})
+  get path 
+end
+
 When /^I send a POST request to "([^\"]*)" with the following:$/ do |path, body|
   post path, body
 end
