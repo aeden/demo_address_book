@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  respond_to :json, :xml
+  respond_to :json, :json_v1, :json_v2, :xml
 
   def index
     respond_with(Card.all)
@@ -10,6 +10,13 @@ class CardsController < ApplicationController
   end
 
   def create
+    debugger
+
+    if request.format.symbol == :json_v2
+      name = params[:name]
+      params[:card].merge!(:first_name => name[:first], :last_name => name[:last], :display_name => name[:display]) if name
+    end
+
     emails_attributes = params.delete(:emails)
     params[:card].merge!(:emails => emails_attributes.map{ |email_attributes| Email.new(email_attributes) }) if emails_attributes
 

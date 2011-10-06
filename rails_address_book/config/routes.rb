@@ -12,7 +12,7 @@ RailsAddressBook::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-
+  
   resources :cards
 
   namespace :v1 do
@@ -21,6 +21,8 @@ RailsAddressBook::Application.routes.draw do
   namespace :v2 do
     resources :cards
   end
+
+  
 
   # Sample resource route within a namespace:
   #   namespace :admin do

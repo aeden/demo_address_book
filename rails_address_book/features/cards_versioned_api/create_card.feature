@@ -31,7 +31,6 @@ Feature: create a card
     Then the response status should be "201"
     And the response body should be a JSON representation of the Card
 
-    @wip
   Scenario: header, version 1
     Given I send and accept JSON using version 1 of the Card API
     When I send a POST request to "/cards" with the following:
@@ -45,7 +44,6 @@ Feature: create a card
     Then the response status should be "201"
     And the response body should be a JSON representation of the Card
 
-    @wip
   Scenario: header, version 2
     Given I send and accept JSON using version 2 of the Card API
     When I send a POST request to "/cards" with the following:
@@ -59,4 +57,4 @@ Feature: create a card
     }
     """
     Then the response status should be "201"
-    And the response body should be a JSON representation of the Card
+    And the response body should be a JSON v2 representation of the Card

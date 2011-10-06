@@ -4,8 +4,8 @@ Given /^I send and accept JSON$/ do
 end
 
 Given /^I send and accept JSON using version (\d+) of the (\w+) API$/ do |version, model|
-  header 'Accept', "application/json;"
-  header 'Content-Type', "application/json;"
+  header 'Accept', "application/vnd.address-book+json; version=#{version}"
+  header 'Content-Type', "application/json"
 end
 
 Given /^I send and accept XML$/ do

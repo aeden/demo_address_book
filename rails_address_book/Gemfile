@@ -35,4 +35,6 @@ group :test do
   gem 'database_cleaner'
   gem 'mustache'
   gem 'ruby-debug19'
+  gem 'json_spec'
+  gem 'json_select'
 end
